@@ -1,0 +1,9 @@
+,TestCaseID,TestFunction,TestInputs,ExcpectedValue,ActualValue,Result
+24,25,Division,"1,1",1.0,1.0,Pass
+25,26,Division,"10,0",0.0,DivisionByZeroError,Fail
+26,27,Division,"100,50",2.0,2.0,Pass
+27,28,Division,"-10,-2",5.0,5.0,Pass
+28,29,Division,"-33,-33",1.0,1.0,Pass
+29,30,Division,"5,2",2.5,2.5,Pass
+30,31,Division,"30,5",6.0,6.0,Pass
+31,32,Division,"8,9",0.0,0.8888888888888888,Fail

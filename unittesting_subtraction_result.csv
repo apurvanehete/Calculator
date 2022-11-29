@@ -1,0 +1,9 @@
+,TestCaseID,TestFunction,TestInputs,ExcpectedValue,ActualValue,Result
+8,9,Substraction,"9,8",1.0,1.0,Pass
+9,10,Substraction,"0,1",-1.0,-1.0,Pass
+10,11,Substraction,"1,2",-1.0,-1.0,Pass
+11,12,Substraction,"-1,-2",1.0,1.0,Pass
+12,13,Substraction,"5,9",-4.0,-4.0,Pass
+13,14,Substraction,"10,-2",12.0,12.0,Pass
+14,15,Substraction,"10,10",0.0,0.0,Pass
+15,16,Substraction,"100,50",50.0,50.0,Pass

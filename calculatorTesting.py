@@ -24,73 +24,81 @@ import pytest
 import csv
 import numpy as np
 
-df= pd.read_excel('unit_testing_exercise.xls')
+df = pd.read_excel(r'/home/softnautics/unit_testing_exercise.xls')
 cal = Calculator.mathOperations()
 
+
 def addTest():
-    opFunction = df.loc[df['TestFunction']=='Addition']
-    finalInput=opFunction['TestInputs'].str.split(',', expand=True).astype(float)
+    opFunction = df.loc[df['TestFunction'] == 'Addition']
+    finalInput = opFunction['TestInputs'].str.split(',', expand=True).astype(float)
     output = opFunction['ExcpectedValue']
-    add = lambda row :cal.addition(row[0],row[1])
+    add = lambda row: cal.addition(row[0], row[1])
     opFunction['ActualValue'] = finalInput.apply(add, axis=1)
-    opFunction['Result']=np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'],'Pass','Fail')
+    opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_addition_result.csv')
-    result=pd.concat([finalInput,output],axis=1, join='outer')
-    finalOutput=result.to_numpy().tolist()
-    finalOutput=[tuple(ele)for ele in finalOutput]
+    result = pd.concat([finalInput, output], axis=1, join='outer')
+    finalOutput = result.to_numpy().tolist()
+    finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
+
 
 def subtractTest():
-    opFunction = df.loc[df['TestFunction']=='Substraction']
-    finalInput = opFunction['TestInputs'].str.split(',',expand=True).astype(float)
+    opFunction = df.loc[df['TestFunction'] == 'Substraction']
+    finalInput = opFunction['TestInputs'].str.split(',', expand=True).astype(float)
     output = opFunction['ExcpectedValue']
-    subtract = lambda row :cal.subtraction(row[0],row[1])
-    opFunction['ActualValue'] = finalInput.apply(subtract,axis=1)
-    opFunction['Result']=np.where(opFunction['ExcpectedValue']==opFunction['ActualValue'],'Pass','Fail')
+    subtract = lambda row: cal.subtraction(row[0], row[1])
+    opFunction['ActualValue'] = finalInput.apply(subtract, axis=1)
+    opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_subtraction_result.csv')
-    result=pd.concat([finalInput,output],axis=1,join='outer')
-    finalOutput=result.to_numpy().tolist()
-    finalOutput=[tuple(ele)for ele in finalOutput]
+    result = pd.concat([finalInput, output], axis=1, join='outer')
+    finalOutput = result.to_numpy().tolist()
+    finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
+
 
 def multiplyTest():
-    opFunction=df.loc[df['TestFunction']=='Multiplication']
-    finalInput=opFunction['TestInputs'].str.split(',',expand=True).astype(float)
-    output=opFunction['ExcpectedValue']
-    multiply = lambda row :cal.multiplication(row[0],row[1])
-    opFunction['ActualValue'] = finalInput.apply(multiply,axis=1)
-    opFunction['Result']=np.where(opFunction['ExcpectedValue']==opFunction['ActualValue'],'Pass','Fail')
+    opFunction = df.loc[df['TestFunction'] == 'Multiplication']
+    finalInput = opFunction['TestInputs'].str.split(',', expand=True).astype(float)
+    output = opFunction['ExcpectedValue']
+    multiply = lambda row: cal.multiplication(row[0], row[1])
+    opFunction['ActualValue'] = finalInput.apply(multiply, axis=1)
+    opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_multiplication_result.csv')
-    result=pd.concat([finalInput,output],axis=1,join='outer')
-    finalOutput=result.to_numpy().tolist()
-    finalOutput=[tuple(ele)for ele in finalOutput]
+    result = pd.concat([finalInput, output], axis=1, join='outer')
+    finalOutput = result.to_numpy().tolist()
+    finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
+
 
 def divisionTest():
-    opFunction=df.loc[df['TestFunction']=='Division']
-    finalInput=opFunction['TestInputs'].str.split(',',expand=True).astype(float)
-    output=opFunction['ExcpectedValue']
-    division = lambda row :cal.division(row[0],row[1])
-    opFunction['ActualValue'] = finalInput.apply(division,axis=1)
-    opFunction['Result']=np.where(opFunction['ExcpectedValue']==opFunction['ActualValue'],'Pass','Fail')
+    opFunction = df.loc[df['TestFunction'] == 'Division']
+    finalInput = opFunction['TestInputs'].str.split(',', expand=True).astype(float)
+    output = opFunction['ExcpectedValue']
+    division = lambda row: cal.division(row[0], row[1])
+    opFunction['ActualValue'] = finalInput.apply(division, axis=1)
+    opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_division_result.csv')
-    result=pd.concat([finalInput,output],axis=1,join='outer')
-    finalOutput=result.to_numpy().tolist()
-    finalOutput=[tuple(ele)for ele in finalOutput]
+    result = pd.concat([finalInput, output], axis=1, join='outer')
+    finalOutput = result.to_numpy().tolist()
+    finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
 
-@pytest.mark.parametrize("firstNumber,secondNumber,expected",addTest())
-def test_addition(firstNumber,secondNumber,expected):
+
+@pytest.mark.parametrize("firstNumber,secondNumber,expected", addTest())
+def test_addition(firstNumber, secondNumber, expected):
     assert Calculator.addition(firstNumber, secondNumber) == expected
 
-@pytest.mark.parametrize("firstNumber,secondNumber,expected",subtractTest())
-def test_subtraction(firstNumber,secondNumber,expected):
+
+@pytest.mark.parametrize("firstNumber,secondNumber,expected", subtractTest())
+def test_subtraction(firstNumber, secondNumber, expected):
     assert Calculator.subtraction(firstNumber, secondNumber) == expected
 
-@pytest.mark.parametrize("firstNumber,secondNumber,expected",multiplyTest())
-def test_multiplication(firstNumber,secondNumber,expected):
+
+@pytest.mark.parametrize("firstNumber,secondNumber,expected", multiplyTest())
+def test_multiplication(firstNumber, secondNumber, expected):
     assert Calculator.multiplication(firstNumber, secondNumber) == expected
 
-@pytest.mark.parametrize("firstNumber,secondNumber,expected",divisionTest())
-def test_division(firstNumber,secondNumber,expected):
+
+@pytest.mark.parametrize("firstNumber,secondNumber,expected", divisionTest())
+def test_division(firstNumber, secondNumber, expected):
     assert Calculator.division(firstNumber, secondNumber) == expected
