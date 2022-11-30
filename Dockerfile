@@ -1,6 +1,2 @@
-FROM python:3.8-slim-buster
-
-WORKDIR /src
-COPY src/Requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "calculatorTesting.py"]
+FROM python:3.8-buster
+CMD [ "python3", "calculatorTesting.py"]

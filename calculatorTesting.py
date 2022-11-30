@@ -23,6 +23,7 @@ import Calculator
 import pytest
 import csv
 import numpy as np
+import xlrd
 
 df = pd.read_excel(r'/home/softnautics/unit_testing_exercise.xls')
 cal = Calculator.mathOperations()
