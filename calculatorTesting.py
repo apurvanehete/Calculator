@@ -39,8 +39,8 @@ def addTest():
     opFunction.to_csv('unittesting_addition_result.csv')
     result = pd.concat([finalInput, output], axis=1, join='outer')
     #dff=pd.DataFrame(finalInput,output)
-   # finalOutput = result.to_numpy().tolist()
-    finalOutput = [tuple(ele) for ele in result]
+    finalOutput = pd.result.tolist()
+    finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
 
 
