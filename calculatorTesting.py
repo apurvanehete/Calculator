@@ -37,8 +37,8 @@ def addTest():
     opFunction['ActualValue'] = finalInput.apply(add, axis=1)
     opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_addition_result.csv')
-    result = pd.concat([finalInput, output], axis=1, join='outer')
-    finalOutput = result.to_numpy().tolist()
+    # result = pd.concat([finalInput, output], axis=1, join='outer')
+    finalOutput = pd.concat([finalInput, output], axis=1, join='outer').to_numpy().tolist()
     finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
 
@@ -66,7 +66,7 @@ def multiplyTest():
     opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_multiplication_result.csv')
     result = pd.concat([finalInput, output], axis=1, join='outer')
-    finalOutput = np.to_numpy(result).tolist()
+    finalOutput = result.to_numpy().tolist()
     finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
 
