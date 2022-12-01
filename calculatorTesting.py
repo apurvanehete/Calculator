@@ -37,7 +37,7 @@ def addTest():
     opFunction['ActualValue'] = finalInput.apply(add, axis=1)
     opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_addition_result.csv')
-    result = pd.concat([finalInput, output], axis=1, join='outer')
+    pd.result = pd.concat([finalInput, output], axis=1, join='outer')
     #dff=pd.DataFrame(finalInput,output)
     finalOutput = pd.result.tolist()
     finalOutput = [tuple(ele) for ele in finalOutput]
