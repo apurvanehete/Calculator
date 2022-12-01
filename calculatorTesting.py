@@ -66,7 +66,7 @@ def multiplyTest():
     opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
     opFunction.to_csv('unittesting_multiplication_result.csv')
     result = pd.concat([finalInput, output], axis=1, join='outer')
-    finalOutput = result.to_numpy().tolist()
+    finalOutput = np.to_numpy(result).tolist()
     finalOutput = [tuple(ele) for ele in finalOutput]
     return finalOutput
 
