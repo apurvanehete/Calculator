@@ -28,19 +28,17 @@ import xlrd
 df = pd.read_excel(r'/home/softnautics/unit_testing_exercise.xls')
 cal = Calculator.mathOperations()
 
-
 def addTest():
-    opFunction = df.loc[df['TestFunction'] == 'Addition']
-    finalInput = opFunction['TestInputs'].str.split(',', expand=True).astype(float)
+    opFunction = df.loc[df['TestFunction']=='Addition']
+    finalInput=opFunction['TestInputs'].str.split(',',expand=True).astype(float)
     output = opFunction['ExcpectedValue']
-    add = lambda row: cal.addition(row[0], row[1])
-    opFunction['ActualValue'] = finalInput.apply(add, axis=1)
-    opFunction['Result'] = np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'], 'Pass', 'Fail')
+    add = lambda row :cal.addition(row[0],row[1])
+    opFunction['ActualValue'] = finalInput.apply(add,axis=1)
+    opFunction['Result']=np.where(opFunction['ExcpectedValue'] == opFunction['ActualValue'],'Pass','Fail')
     opFunction.to_csv('unittesting_addition_result.csv')
-    pd.result = pd.concat([finalInput, output], axis=1, join='outer')
-    #dff=pd.DataFrame(finalInput,output)
-    finalOutput = pd.result.tolist()
-    finalOutput = [tuple(ele) for ele in finalOutput]
+    result=pd.concat([finalInput,output],axis=1,join='outer')
+    finalOutput=result.to_numpy().tolist()
+    finalOutput=[tuple(ele)for ele in finalOutput]
     return finalOutput
 
 
