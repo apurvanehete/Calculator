@@ -4,7 +4,7 @@ pipeline
     {
         registry = "apurvanehete/softnauticsllp"
         registryCredential = 'Docker_ID'
-        dockerImage = ''
+        dockerimage = ''
     }
     agent any
     stages {
