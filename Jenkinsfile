@@ -39,7 +39,8 @@ pipeline
         {
             steps
             {
-                sh "sudo docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "python3 calculatorTesting.py"
             }
         }
     }
