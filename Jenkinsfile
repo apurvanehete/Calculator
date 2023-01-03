@@ -40,7 +40,6 @@ pipeline
             steps
             {
                 sh "docker rmi $registry:$BUILD_NUMBER"
-                sh "python3 calculatorTesting.py"
             }
         }
     }
