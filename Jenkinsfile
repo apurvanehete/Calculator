@@ -32,7 +32,7 @@ pipeline
                 script {
                     docker.withRegistry( '', registryCredential ) {
                     dockerImage.push() }
-                    sh "docker run dockerImage"
+                    sh "docker run $dockerImage"
                 }
             }
         }
