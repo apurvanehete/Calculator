@@ -20,8 +20,8 @@ pipeline
             steps
             {
                 script {
-                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                     sh "docker run $dockerImage"
+                     dockerimage = docker.build registry + ":$BUILD_NUMBER"
+                     sh "docker run $dockerimage"
 
                 }
 
@@ -33,7 +33,7 @@ pipeline
             {
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push() }
+                    dockerimage.push() }
                 }
             }
         }
