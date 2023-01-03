@@ -13,6 +13,7 @@ pipeline
             steps
             {
                 git branch: 'master', credentialsId: '872f84d6-0500-4d2d-ab78-ea58896914e0', url: 'https://github.com/apurvanehete/Calculator.git'
+                sh 'python3 calculatorTesting.py'
             }
         }
         stage('Building our image')
