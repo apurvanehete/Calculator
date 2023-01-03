@@ -4,7 +4,7 @@ pipeline
     {
         registry = "apurvanehete/softnauticsllp"
         registryCredential = 'Docker_ID'
-        dockerimage = ''
+        dockerImage = ''
     }
     agent any
     stages {
@@ -20,9 +20,7 @@ pipeline
             steps
             {
                 script {
-                     dockerimage = docker.build registry + ":$BUILD_NUMBER"
-                     sh "docker run $dockerimage"
-
+                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
 
             }
@@ -33,7 +31,7 @@ pipeline
             {
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                    dockerimage.push() }
+                    dockerImage.push() }
                 }
             }
         }
