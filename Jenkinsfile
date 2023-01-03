@@ -6,7 +6,7 @@ pipeline
         registryCredential = 'Docker_ID'
         dockerImage = ''
     }
-    agent any
+    agent agent1
     stages {
         stage('Cloning our Git')
         {
