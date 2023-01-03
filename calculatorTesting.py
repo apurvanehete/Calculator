@@ -25,7 +25,7 @@ import csv
 import numpy as np
 import xlrd
 
-df = pd.read_excel(r'/home/softnautics/unit_testing_exercise.xls')
+df = pd.read_excel(r'unit_testing_exercise.xls')
 cal = Calculator.mathOperations()
 
 def addTest():
